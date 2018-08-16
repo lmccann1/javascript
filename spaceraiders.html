@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Test Move Object</title>
+   
+       <script type="text/javascript">
+          //  var imgObj = null;
+          //  var animate;
+                function leftArrowPressed() {
+                var element = document.getElementById("image1");
+                element.style.left = parseInt(element.style.left) - 5 + 'px';
+            }
+
+            function rightArrowPressed() {
+                var element = document.getElementById("image1");
+                element.style.left = parseInt(element.style.left) + 5 + 'px';
+            }
+
+            function fire() {
+                var element = document.getElementById("bullet");
+                element.style.bottom = parseInt(element.style.bottom) + 5 + 'px';
+            }
+
+            function downArrowPressed() {
+                var element = document.getElementById("image1");
+                element.style.top = parseInt(element.style.top) + 5 + 'px';
+            }
+         //   function init(){
+           //     imgObj = document.getElementById('image2');
+            //    imgObj.style.position='relative';
+             //   imgObj.style.top = '0px';
+         //   }
+            function moveDown() {
+    var element = document.getElementById("image2"); 
+    var pos = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (pos == 350) {
+            clearInterval(id);
+        } else {
+            pos++; 
+            element.style.top = pos + 'px'; 
+         //   elem.style.left = pos + 'px'; 
+        }
+    }
+}
+        
+     //       window.onload = init;
+            function moveSelection(event) {                    
+                switch (event.keyCode) {
+                    case 37:
+                        leftArrowPressed();
+                    break;
+
+                    case 39:
+                        rightArrowPressed();
+                    break;
+
+                    case 38:
+                        moveDown();
+                    break;
+
+                    case 40:
+                        downArrowPressed();
+                    break;
+              
+                }
+            };
+
+        function gameLoop()
+        {
+            // change position based on speed
+            moveSelection();
+         //   moveDown();
+            setTimeout("gameLoop()",10);
+          //  clearTimeout(animate);
+         //   imgObj.style.top = '0px'; 
+
+        }
+  </script>
+  </head>
+  <body onload="gameLoop();" onkeydown="moveSelection(event)" bgcolor='black'>
+   Test
+   <img id="bullet" src="bullet.jpg" style="position: absolute; left: 0; right: 0; bottom: 0; "  height="50" width="50">
+    <img id="image2" src="a2.jpg" height="100" width="100">
+  <img id="image1" src="rocket.jpg" style="position: absolute; left: 0; right: 0; bottom: 0; "  height="50" width="50">
+  </body>
+   end html
+</html>
